@@ -14,7 +14,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class AuthorService {
 
-    private AuthorRepository authorRepository;
+    private final AuthorRepository authorRepository;
 
     public Optional<Author> getAuthor(Long id) {
         return authorRepository.findById(id);
