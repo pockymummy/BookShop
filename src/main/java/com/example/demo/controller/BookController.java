@@ -11,6 +11,7 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -29,10 +30,15 @@ public class BookController {
 
     @GetMapping("/{id}")
     @Cacheable("books")
-    public ResponseEntity<Book> getBook(@PathVariable Long id) {
+    public ResponseEntity<Book> getBookById(@PathVariable Long id) {
         Optional<Book> book = bookRepository.findById(id);
         return book.map(ResponseEntity::ok).orElseGet(() ->
                 ResponseEntity.notFound().build());
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Book>> getAllBook () {
+        return ResponseEntity.ok(bookRepository.findAll());
     }
 
     @PutMapping("/{id}")
