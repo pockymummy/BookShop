@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.model.Author;
 import com.example.demo.repository.AuthorRepository;
+import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
